@@ -1,0 +1,6 @@
+@mixin type-size($sizeValue: 1.6, $lineHeight: $sizeValue) {
+  font-size: ($sizeValue * 10) + px;
+  font-size: ($sizeValue / 1.6) + rem;
+  line-height: ($lineHeight * 10) + px;
+  line-height: ($lineHeight / 1.6) + rem;
+}

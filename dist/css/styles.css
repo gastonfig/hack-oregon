@@ -322,14 +322,35 @@ td, th {
 
 /* GLOBAL
 ----------------------------------------------- */
+body {
+  font-family: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif; }
+
+img {
+  max-width: 100%; }
+
 /* LAYOUT
 ----------------------------------------------- */
 .container__grid {
   display: block;
-  max-width: 65em;
+  padding-left: 4%;
+  padding-right: 4%;
+  max-width: 60em;
   margin-left: auto;
   margin-right: auto; }
   .container__grid:after {
     content: " ";
     display: block;
     clear: both; }
+
+.block {
+  margin-left: 18.75%;
+  width: 62.5%;
+  float: left; }
+
+/* TYPOGRAPHY
+----------------------------------------------- */
+p {
+  font-size: 18px;
+  font-size: 1.125rem;
+  line-height: 35px;
+  line-height: 2.1875rem; }

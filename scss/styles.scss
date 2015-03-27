@@ -1,24 +1,43 @@
 @import "../bower_components/susy/sass/_susy"; // Including susy manually so we can use the Bower version
 @import 'vendor/_normalize';
+@import 'modules/_mixins';
 
 /* GLOBAL
 ----------------------------------------------- */
 body {
+	font-family: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
+}
 
+img {
+	max-width: 100%;
 }
 
 /* LAYOUT
 ----------------------------------------------- */
+$container-width: 960 / 16;
+
 $susy: (
 	columns: 16,
 	gutters: 0,
-	container: 65em, // 1040px
+	container: #{$container-width}em,
 	// debug: (image:show)
 );
 
 .container__grid {
 	display: block;
-	// padding-left: 2.5%;
-	// padding-right: 2.5%;
+	padding-left: 4%;
+	padding-right: 4%;
 	@include container();
+}
+
+.block {
+	@include pre(3);
+	@include span(10);
+}
+
+
+/* TYPOGRAPHY
+----------------------------------------------- */
+p {
+	@include type-size(1.8, 3.5);
 }
