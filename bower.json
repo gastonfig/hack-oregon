@@ -1,0 +1,9 @@
+{
+  "name": "hack-oregon-education",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "susy": "~2.2.2"
+  }
+}

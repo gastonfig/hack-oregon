@@ -1,11 +1,24 @@
-
-
+@import "../bower_components/susy/sass/_susy"; // Including susy manually so we can use the Bower version
+@import 'vendor/_normalize';
 
 /* GLOBAL
 ----------------------------------------------- */
 body {
-	// background: blue;
+
 }
 
 /* LAYOUT
 ----------------------------------------------- */
+$susy: (
+	columns: 16,
+	gutters: 0,
+	container: 65em, // 1040px
+	// debug: (image:show)
+);
+
+.container__grid {
+	display: block;
+	// padding-left: 2.5%;
+	// padding-right: 2.5%;
+	@include container();
+}
