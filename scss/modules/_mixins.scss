@@ -1,6 +1,42 @@
+// 770
+
+
+// Media Queries
+@mixin breakpoint($point) {
+  @if $point == desktop {
+    @media only screen and (max-width: 950px) { @content; }
+  }
+  @else if $point == tablet-portrait {
+    @media only screen and (max-width: 870px) { @content; }
+  }
+  @else if $point == phone-big {
+    @media only screen and (max-width: 767px)  { @content; }
+  }
+  @else if $point == phone-mid {
+    @media only screen and (max-width: 640px)  { @content; }
+  }
+  @else if $point == phone-mid-small {
+    @media only screen and (max-width: 540px)  { @content; }
+  }
+  @else if $point == phone {
+    @media only screen and (max-width: 480px)  { @content; }
+  }
+  @else if $point == phone-small {
+    @media only screen and (max-width: 320px)  { @content; }
+  }
+  @else {
+    @media only screen and (#{$point}) { @content; }
+  }
+}
+
 @mixin type-size($sizeValue: 1.6, $lineHeight: $sizeValue) {
   font-size: ($sizeValue * 10) + px;
   font-size: ($sizeValue / 1.6) + rem;
   line-height: ($lineHeight * 10) + px;
   line-height: ($lineHeight / 1.6) + rem;
+}
+
+@mixin px-to-rem($property, $val) {
+  #{$property}: ($val * 10) + px;
+  #{$property}: ($val / 1.6) + rem;
 }
