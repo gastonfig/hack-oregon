@@ -25,7 +25,8 @@ gulp.task('watch', function() {
   livereload.listen();
   gulp.watch('scss/{,*/}*.{scss,sass}', ['sass'])
   gulp.watch('./js/{,*/}*.js', ['concat-js']);
-  gulp.watch('dist/index.html', ['html']);
+  gulp.watch('dist/*.html', ['html']);
+  gulp.watch('dist/js/*.js', ['html']);
 });
 
 // HTML
@@ -39,6 +40,9 @@ gulp.task('html', function() {
 // CONCAT JS
 gulp.task('concat-js', function() {
   return gulp.src([
+    'bower_components/d3/d3.js',
+    'bower_components/c3js-chart/c3.js',
+    'bower_components/jquery/dist/jquery.js',
     'js/main.js'
     ])
     .pipe(concat('scripts.min.js'))
