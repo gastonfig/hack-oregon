@@ -483,6 +483,8 @@ td, th {
 figcaption, h1, h2, h3, h4 {
   font-family: 'Open Sans', sans-serif; }
 
+/* COLORS
+----------------------------------------------- */
 /* GLOBAL
 ----------------------------------------------- */
 body {
@@ -495,6 +497,9 @@ figure {
   margin-bottom: 1.875rem;
   margin-top: 30px;
   margin-top: 1.875rem; }
+
+.block figure {
+  margin: 0; }
 
 img {
   max-width: 100%; }
@@ -564,10 +569,10 @@ h1 {
 
 h2 {
   text-transform: uppercase;
-  font-size: 30px;
-  font-size: 1.875rem;
-  line-height: 30px;
-  line-height: 1.875rem;
+  font-size: 26px;
+  font-size: 1.625rem;
+  line-height: 26px;
+  line-height: 1.625rem;
   margin-bottom: 42px;
   margin-bottom: 2.625rem;
   margin-top: 42px;
@@ -626,11 +631,11 @@ p, ul, ol {
 .drop {
   position: relative; }
   .drop:after {
-    background: #eee;
+    background: #7febbd;
     content: '';
     left: 50%;
     height: 200px;
-    opacity: .3;
+    opacity: .2;
     top: 50%;
     width: 200px;
     position: absolute;
@@ -638,16 +643,39 @@ p, ul, ol {
     transform: translate(-50%, -50%);
     border-radius: 100%; }
 
+/* TOP
+----------------------------------------------- */
+.main-logo {
+  display: block;
+  margin: 0 auto;
+  width: 90px; }
+
 /* CHART
 ----------------------------------------------- */
-.chart h2 {
-  font-weight: 700;
-  font-size: 18px;
-  font-size: 1.125rem;
-  line-height: 18px;
-  line-height: 1.125rem;
-  margin: 0;
-  border-bottom: 1px solid #ddd; }
+.chart {
+  background: #eee; }
+  .chart h2 {
+    color: #aaa;
+    font-weight: 700;
+    margin: 0 0 20px 0;
+    font-size: 20px;
+    font-size: 1.25rem;
+    line-height: 20px;
+    line-height: 1.25rem; }
+
+.chart-container {
+  background: #fff;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.01);
+  margin-bottom: 30px;
+  width: 105%; }
+  .chart-container h3 {
+    font-weight: 700;
+    margin: 0 20px;
+    padding: 20px 0;
+    font-size: 12px;
+    font-size: 0.75rem;
+    line-height: 20px;
+    line-height: 1.25rem; }
 
 h3 {
   color: #222; }
@@ -656,25 +684,30 @@ h3 {
   list-style: none; }
 
 .school-select {
+  background: #222;
+  height: 100%;
+  padding: 20px;
   position: fixed;
-  left: 30px;
-  top: 40px; }
+  left: 0px;
+  top: 0px;
+  width: 220px; }
 
 .chart li {
   cursor: pointer;
-  color: #666;
+  color: #777;
   font-size: 14px;
   font-size: 0.875rem;
   line-height: 20px;
   line-height: 1.25rem; }
   .chart li.selected {
-    color: #111;
+    color: #fff;
     font-weight: 800; }
   .chart li:hover {
     text-decoration: underline; }
 
 text {
-  fill: #aaa; }
+  fill: #aaa;
+  font-size: 8px; }
 
 .c3 path, .c3 line {
   fill: none;
