@@ -6,6 +6,7 @@ var ElasticFacade = (function() {
     "schools" : [{
       "id" : 123,
       "name" : "Jackson Elementary",
+      "type" : "E",
       "data_series" : {
         "MathPctMet" : [
           { "year_ending" : "2004-07-01", "value" : 12.5 },
@@ -62,7 +63,8 @@ var ElasticFacade = (function() {
       }
     },{
       "id" : 456,
-      "name" : "Jefferson Elementary",
+      "name" : "Jefferson Middle",
+      "type" : "M",
       "data_series" : {
         "MathPctMet" : [
           { "year_ending" : "2004-07-01", "value" : 95.5 },
@@ -121,7 +123,88 @@ var ElasticFacade = (function() {
   };
 
   function getDataSeries(schoolIds, callback) {
-    return dataSeriesFixtures;
+    $.ajax({
+      type: "POST",
+      url: "http://52.0.223.139:9200/education/schools/_search",
+      dataType: "json",
+      data: createQueryForSchools(schoolIds),
+      success: function(data) { handleDataSeriesResponse(data, schoolIds, callback); }
+    });
+    callback(dataSeriesFixtures);
+  }
+
+  function createQueryForSchools(schoolIds) {
+    return {
+      "from" : 0,
+      "size" : schoolIds.length * 15,
+      "fields" : [
+        "SchoolID",
+        "YearEnding",
+        "SchoolName",
+        "SchoolType",
+        "SchoolRating",
+        "MathPctMet",
+        "ReadingPctMet",
+        "WritingPctMet",
+        "PctEconomicallyDisadvantaged"
+      ],
+      "_source" : false,
+      "query" : {
+        "filtered" : {
+          "query" : {
+            "match_all" : {}
+          },
+          "filter" : {
+            "terms" : {
+              "SchoolID" : schoolIds
+            }
+          }
+        }
+      },
+      "sort" : [
+        { "SchoolID" : "asc" },
+        { "YearEnding" : "asc" }
+      ]
+    };
+  }
+
+  function handleDataSeriesResponse(data, schoolIds, callback) {
+    var hits = data.hits.hits;
+    var schoolsById = {};
+    for (var i = 0; i < hits.length; i++) {
+      var fields = hits[i].fields;
+      var schoolId = fields["SchoolID"][0];
+      var school;
+      if (schoolsById.hasOwnPropery(schoolId)) {
+        school = schoolsById[schoolId];
+      } else {
+        school = {
+          "id" : schoolId,
+          "name" : fields["SchoolName"][0],
+          "type" : fields["SchoolType"][0],
+          "data_series" : {
+            "MathPctMet" : [],
+            "ReadingPctMet" : [],
+            "WritingPctMet" : [],
+            "PctEconomicallyDisadvantaged" : []
+          }
+        };
+        schoolsById[schoolId] = school;
+      }
+      var metricNames = [ "MathPctMet", "ReadingPctMet", "WritingPctMet", "PctEconomicallyDisadvantaged" ];
+      for (var j = 0; j < metricNames.length; j++) {
+        var metricName = metricNames[j];
+        school["data_series"][metricName].push({
+          "year_ending" : fields["YearEnding"][0],
+          "value" : fields[metricName][0]
+        });
+      }
+    }
+    for (var id in schoolIds) {
+      var school = schoolsById[id];
+      schools.push(school);
+    }
+    callback({ "schools" : schools });
   }
 
   function getAllSchools() {
