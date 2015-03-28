@@ -36,7 +36,7 @@
   stroke-width: 1.5px;
 }
     </style>
-    <body>
+    <body class="chart">
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -47,10 +47,27 @@
             </div>
         </header> -->
         <div class="main-container container__grid">
-            <div id="chart"></div>
+            <div class="school-select">
+            <h2>Schools</h2>
+                <ul id="schools">
+                    <li class="selected">Cherry Park</li>
+                    <li>Earl Boyles</li>
+                    <li>Gilbert Heights</li>
+                    <li>Gilbert Park</li>
+                    <li>Lincoln Park</li>
+                    <li>Mill Park</li>
+                    <li>Ventura Park</li>
+                    <li>West Powellhurst</li>
+                </ul>
+                
+            </div>
 
+            <h3>Poverty</h3>
+            <div id="poverty-chart"></div>
+            
+            <h3>Reading</h3>
             <div id="reading-chart"></div>
-
+            <h3>Math</h3>
             <div id="math-chart"></div>
         </div>
 

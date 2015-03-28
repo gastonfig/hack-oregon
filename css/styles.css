@@ -637,3 +637,48 @@ p, ul, ol {
     z-index: -1;
     transform: translate(-50%, -50%);
     border-radius: 100%; }
+
+/* CHART
+----------------------------------------------- */
+.chart h2 {
+  font-weight: 700;
+  font-size: 18px;
+  font-size: 1.125rem;
+  line-height: 18px;
+  line-height: 1.125rem;
+  margin: 0;
+  border-bottom: 1px solid #ddd; }
+
+h3 {
+  color: #222; }
+
+.chart ul {
+  list-style: none; }
+
+.school-select {
+  position: fixed;
+  left: 30px;
+  top: 40px; }
+
+.chart li {
+  cursor: pointer;
+  color: #666;
+  font-size: 14px;
+  font-size: 0.875rem;
+  line-height: 20px;
+  line-height: 1.25rem; }
+  .chart li.selected {
+    color: #111;
+    font-weight: 800; }
+  .chart li:hover {
+    text-decoration: underline; }
+
+text {
+  fill: #aaa; }
+
+.c3 path, .c3 line {
+  fill: none;
+  stroke: #ddd; }
+
+.c3 circle {
+  r: 9; }
