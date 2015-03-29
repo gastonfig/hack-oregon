@@ -607,6 +607,12 @@ ul, ol {
     ul, ol {
       padding-left: 24px; } }
 
+a {
+  color: #195f62;
+  text-decoration: none; }
+  a:hover {
+    text-decoration: underline; }
+
 .lead {
   font-weight: 100;
   letter-spacing: -.4px;
@@ -652,6 +658,10 @@ p, ul, ol {
 
 /* CHART
 ----------------------------------------------- */
+.app-logo {
+  margin-bottom: 20px;
+  width: 60px; }
+
 .chart {
   background: #eee;
   margin-top: 20px; }
