@@ -715,3 +715,6 @@ text {
 
 .c3 circle {
   r: 9; }
+
+.tick line, path.domain {
+  stroke: none; }
